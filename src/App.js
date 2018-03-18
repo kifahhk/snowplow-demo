@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Route, Link, Switch } from 'react-router-dom';
 import './App.css';
+import Page1 from './page1';
+import Page2 from './page2';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+					<Link to="/page1">Go To Page One</Link>
+					<Link to="/page2">Go To Page Two</Link>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <section className="App-intro">
+					<Switch>
+						<Route
+							exact
+							path='/page1'
+							component={Page1}
+						/>
+						<Route
+							exact
+							path="/page2"
+							component={Page2}
+						/>
+					</Switch>
+        </section>
       </div>
     );
   }
